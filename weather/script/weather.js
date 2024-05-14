@@ -1,38 +1,90 @@
-const currentTemp = document.querySelector("#current-temp");
-const weatherIcon = document.querySelector("#weather-icon");
-const captionDesc = document.querySelector("figcaption"); 
+const axios = require('axios');
 
-const url = "https://api.openweathermap.org/data/2.5/weather?q=Soshanguve&units=metric&appid=ec98f94b11c44d888dd6bca93d566cd5";
+const getWeather = async () => {
+    try{
+        const location = document.getElementById('locationInput').value;
+        const response = await axios.get('https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=ec98f94b11c44d888dd6bca93d566cd5')
+        
+        const weatherData = response.data;
+        const forecast = {
+            city: weatherData.name,
+            temprature: weatherData.main.temp,
+            description: weatherData.weather[0].description
+        };
 
-function displayResults (weatherData) {
-    currentTemp.innerHTML = `<strong>${weatherData.main.temp.toFixed(0)}</strong>`
-
-    const iconsrc = `https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
-    const desc = weatherData.weather[0].description;
-  
-    weatherIcon.setAttribute('src', iconsrc);
-    weatherIcon.setAttribute('alt', desc);
-    captionDesc.textContent = desc;
-
-}
-
-
-
-async function apiFetch() {
-    try {
-        const response = await fetch(url);
-        if (response.ok) {
-            const data = await response.json();
-            console.log(data);// this is for testing the call
-            displayResults(data);
-
-        } else {
-            throw Error(await response.text());
-        }
-
+        displayWeatherForecast(forecast);
     } catch (error) {
-        console.log(error);
+        console.error('Error fertching data', error.message);
+        displayError(error.message)
     }
+};
 
-}
-apiFetch();
+// funcrion to dispaly weather forcast on the screen
+
+const displayWeatherForecast = (forecast) => {
+    const weatherForecastDiv = document.getElementById('weatherForecast');
+    weatherForecastDiv.innerHTML =`
+    <h2> Weather Forecast for ${forecast.city}</h>
+    <p><strong>Temprature:</strong> ${forecast.temprature}°C</p>
+    <p><strong>Description:</strong>${forecast.description}</p>
+    `;
+
+};
+
+//function to display error
+const displayError = (errorMessage) => {
+    const weatherForecastDiv = document.getElementById('weatherForecast');
+    weatherForecastDiv.innerHTML = `<p class='error'>${errorMessage}</p>`;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

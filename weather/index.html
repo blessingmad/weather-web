@@ -13,19 +13,16 @@
 
 </head>
 <body>
-    <main>
-    <h1>Weather Service</h1>
-    <p>The current temperature in [] <span id="current-temp"></span>&deg;F</p>
-    <h2>Current Condition Icon</h2>
-    <figure>
-        <img src="" alt="" id="weather-icon"/>
-        <figcaption></figcaption>
-    </figure>
-    </main>
+
+
+    <input type="text" id="locationInput" placeholder="Enter Location">
+    <button onclick="getWeather()">Search</button>
+    <div id="weatherForecast"></div>
+
     <footer>
         &copy;2024 | Blessing Madhuma | Weather Service| Pretoria | Last Updated: <span id="lastModified"></span>
     </footer>
-    <script src="../weather/script/weather.js"></script>
+     <script src="../weather/script/weather.js"></script>
 
 </body>
 </html>
