@@ -5,13 +5,12 @@ This program displays weather information for different locations based on the u
 
 
 A demostration for the program : [Software Demo Video](http://youtube.link.goes.here)
-
 # Development Environment
 
-Visual Studio Code
-JavaScript
-HTML
-CSS
+* Visual Studio Code
+* JavaScript, HTML, CSS.
+* Git/Github
+
 
 
 
