@@ -17,3 +17,17 @@ body p, h1, h2, img, figcaption {
     text-align: center;
     text-justify: center;
 }
+#time {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    background-color: #B2DB3F;
+    border-radius: 20px;
+    color: #001011;
+    text-align: center;
+}
+footer{
+    background-color: black;
+    padding: 8px;
+    color: white;
+    display: block;
+}

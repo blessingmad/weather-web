@@ -1,55 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Rock+Salt&display=swap');
-
-header{
-    text-align: center;
-    background-color: blue;
-    justify-content: center;
-    display: grid;
-    width: 50%;
-    color: bisque;
-    grid-column: 1/2;
-    font-size: larger;
-    
-}
-
-    /*we can add a background color to show the link area*/
-li a:hover {
-    background-color: blueviolet;
-    color: white;
-}
-li a.active {
-    background-color: #04aa6d;
-    color: white;
-}
-li a:hover:not(.active) {
-    background-color: blueviolet;
-    color: white;
-}
-
-
-
-h2{
-    font-family: Rock Salt;
-    text-align: left;
-    width: 50%;
-}
-main{
-    text-align: center;
-    font-family: Open Sans;
-}
-footer{
-    text-align: center;
-    padding: 10px;
-    background-color: blue;
-    width: 50%;
-    display: flex;
-    color: beige;
-}
-nav{
-    text-align: center;
-    width: 50%;
-    
-}
-img{
-    text-align: left;
+@media only screen and (min-width:1000px) {
+    footer {
+        display: flex;
+        padding: 25px 40px;
+    }
 }
