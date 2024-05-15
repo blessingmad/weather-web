@@ -14,15 +14,49 @@
 </head>
 <body>
 
+    <h2>Weather Service</h2>
 
-    <input type="text" id="locationInput" placeholder="Enter Location">
-    <button onclick="getWeather()">Search</button>
-    <div id="weatherForecast"></div>
 
-    <footer>
-        &copy;2024 | Blessing Madhuma | Weather Service| Pretoria | Last Updated: <span id="lastModified"></span>
-    </footer>
-     <script src="../weather/script/weather.js"></script>
+    <div class="weather">
+        <div id="weather-card">
+            <div id="time">
+                <time></time>
+            </div>
+        <h2>Pretoria</h2>
+             
+        <input type="text" id="locationInput" placeholder="Enter Location">
+        <button onclick="getWeather()">Search</button>
+        <div id="weatherForecast"></div>
+
+        <h3>Current Temperature: <span id="current-temp"></span>&deg;C</h3>
+        <h3>Feels Like: <span id="wind-chill"></span>&deg;C</h3>
+        <h3>Humidity: <span id="humidity"></span>%</h3>
+            
+            <h3>3-Day Temperature Forecast: <span id="forecast"></span></h3>
+        <figure id="desc">
+            <figcaption></figcaption>
+            <img src=" https://openweathermap.org/img/w/" alt="Weather icon" id="weather-icon" />
+            
+        </figure>
+        </div>
+        <footer>
+
+            <p></p> &copy; 2024 | Weather Service | Blessing Madhuma | Last Updated: <span id="lastModified"></span> 
+            <a class="location" href="https://www.google.com/maps/place/521+Forest+Ave,+Laguna+Beach,+CA+92651,+USA/@33.546116,-117.7819532,19z/data=!3m1!4b1!4m6!3m5!1s0x80dce5caff4c7867:0xb5975f509edfdaab!8m2!3d33.546116!4d-117.781406!16s%2Fg%2F11c26fdnmc?entry=ttu">Location</a>
+            
+            <div class="social">
+                <a href="https://facebook.com" target="_blank">
+                    <img src="images/facebook.png" alt="fb icon">
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <img src="images/twitter.png" alt="twitter icon">
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <img src="images/instagram.png" alt="instagram icon">
+                </a>
+            </div>
+        </footer>
+        <script src="script/weather.js"></script>
 
 </body>
 </html>

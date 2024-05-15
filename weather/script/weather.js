@@ -1,41 +1,63 @@
-const axios = require('axios');
+//Add date to the page
 
-const getWeather = async () => {
-    try{
-        const location = document.getElementById('locationInput').value;
-        const response = await axios.get('https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=ec98f94b11c44d888dd6bca93d566cd5')
-        
-        const weatherData = response.data;
-        const forecast = {
-            city: weatherData.name,
-            temprature: weatherData.main.temp,
-            description: weatherData.weather[0].description
-        };
+const dateField = document.querySelector("time");
 
-        displayWeatherForecast(forecast);
+const today = new Date();
+
+const fullDate = new Intl.DateTimeFormat("en-US", {dateStyle: "full"}).format(today);
+
+dateField .textContent = fullDate;
+
+
+
+
+
+//declare variables to be displayed on the screen
+const currentTemp = document.querySelector("#current-temp");
+const weatherIcon = document.querySelector("#weather-icon");
+const captionDesc = document.querySelector("figcaption"); 
+const humidity= document.querySelector("#humidity");
+const windChill = document.querySelector("#wind-chill");
+const foreCast = document.querySelector("#forecast");
+//personal link to the openweather service for getting weather data.
+const url = "https://api.openweathermap.org/data/2.5/weather?q=Pretoria&units=metric&appid=ec98f94b11c44d888dd6bca93d566cd5";
+//function for displaying weather infomation.
+function displayResults (weatherData) {
+    currentTemp.innerHTML = `<strong>${weatherData.main.temp.toFixed(2)}</strong>`
+    //link for the different weather icons
+    const iconsrc = `https://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
+    const desc = weatherData.weather[0].description;
+  
+    weatherIcon.setAttribute('src', iconsrc);
+    weatherIcon.setAttribute('alt', desc);
+    captionDesc.textContent = desc;
+
+    humidity.innerHTML = `<strong> ${weatherData.main.humidity.toFixed(1)}</strong>`
+    windChill.innerHTML = `<strong> ${weatherData.main.feels_like.toFixed(1)}</strong>`
+    foreCast.innerHTML = `<strong> ${weatherData.wind.speed.toFixed(1)}</strong>`
+
+}
+
+
+//this function is for getting the response from the openweather database 
+async function apiFetch() {
+    try {
+        const response = await fetch(url);
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);// this is for testing the call
+            displayResults(data);
+            
+        } else {
+            throw Error(await response.text());
+        }
+    // for catching errors
     } catch (error) {
-        console.error('Error fertching data', error.message);
-        displayError(error.message)
+        console.log(error);
     }
-};
 
-// funcrion to dispaly weather forcast on the screen
-
-const displayWeatherForecast = (forecast) => {
-    const weatherForecastDiv = document.getElementById('weatherForecast');
-    weatherForecastDiv.innerHTML =`
-    <h2> Weather Forecast for ${forecast.city}</h>
-    <p><strong>Temprature:</strong> ${forecast.temprature}°C</p>
-    <p><strong>Description:</strong>${forecast.description}</p>
-    `;
-
-};
-
-//function to display error
-const displayError = (errorMessage) => {
-    const weatherForecastDiv = document.getElementById('weatherForecast');
-    weatherForecastDiv.innerHTML = `<p class='error'>${errorMessage}</p>`;
-};
+}
+apiFetch();
 
 
 
