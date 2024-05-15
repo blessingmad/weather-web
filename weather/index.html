@@ -19,15 +19,21 @@
 
     <div class="weather">
         <div id="weather-card">
+
+            
+            <!--dispaly date and time-->
             <div id="time">
                 <time></time>
             </div>
         <h2>Pretoria</h2>
-             
+
+
+         <!--Search bar-->    
         <input type="text" id="locationInput" placeholder="Enter Location">
         <button onclick="getWeather()">Search</button>
         <div id="weatherForecast"></div>
 
+        <!--Getting info from the javascrip-->
         <h3>Current Temperature: <span id="current-temp"></span>&deg;C</h3>
         <h3>Feels Like: <span id="wind-chill"></span>&deg;C</h3>
         <h3>Humidity: <span id="humidity"></span>%</h3>
@@ -43,7 +49,7 @@
 
             <p></p> &copy; 2024 | Weather Service | Blessing Madhuma | Last Updated: <span id="lastModified"></span> 
             
-            
+            <!-- links to social media sites -->
             <div class="social">
                 <a href="https://facebook.com" target="_blank">
                     <img src="images/facebook.png" alt="fb icon">
@@ -56,6 +62,7 @@
                 </a>
             </div>
         </footer>
+        <!--link to the javasript file-->
         <script src="script/weather.js"></script>
 
 </body>
