@@ -1,6 +1,6 @@
 # Overview
 
-This program displaces weather information for different locations based on the user's search.
+This program displays weather information for different locations based on the user's search.
 
 
 
