@@ -4,7 +4,7 @@ This program displays weather information for different locations based on the u
 
 
 
-A demostration for the program : [Software Demo Video](http://youtube.link.goes.here)
+A demostration for the program : [Software Demo Video](https://youtu.be/khX6p30X6mw)
 # Development Environment
 
 * Visual Studio Code
