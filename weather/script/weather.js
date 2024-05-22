@@ -21,6 +21,19 @@ const windChill = document.querySelector("#wind-chill");
 const foreCast = document.querySelector("#forecast");
 //personal link to the openweather service for getting weather data.
 const url = "https://api.openweathermap.org/data/2.5/weather?q=Pretoria&units=metric&appid=ec98f94b11c44d888dd6bca93d566cd5";
+
+
+async function getWeather() {
+    // get the location
+    let location = document.getElementById("locationInput").value;
+    
+    // build the url using the location
+    let location_url = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=metric&appid=ec98f94b11c44d888dd6bca93d566cd5";
+    
+    await apiFetch(location_url);
+    
+    };
+    apiFetch(location);
 //function for displaying weather infomation.
 function displayResults (weatherData) {
     currentTemp.innerHTML = `<strong>${weatherData.main.temp.toFixed(2)}</strong>`
