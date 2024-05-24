@@ -19,9 +19,9 @@ const captionDesc = document.querySelector("figcaption");
 const humidity= document.querySelector("#humidity");
 const windChill = document.querySelector("#wind-chill");
 const foreCast = document.querySelector("#forecast");
+
 //personal link to the openweather service for getting weather data.
 const url = "https://api.openweathermap.org/data/2.5/weather?q=Pretoria&units=metric&appid=ec98f94b11c44d888dd6bca93d566cd5";
-
 
 async function getWeather() {
     // get the location
@@ -33,7 +33,7 @@ async function getWeather() {
     await apiFetch(location_url);
     
     };
-    apiFetch(location);
+    
 //function for displaying weather infomation.
 function displayResults (weatherData) {
     currentTemp.innerHTML = `<strong>${weatherData.main.temp.toFixed(2)}</strong>`
@@ -53,9 +53,9 @@ function displayResults (weatherData) {
 
 
 //this function is for getting the response from the openweather database 
-async function apiFetch() {
+async function apiFetch(location_url) {
     try {
-        const response = await fetch(url);
+        const response = await fetch(location_url);
         if (response.ok) {
             const data = await response.json();
             console.log(data);// this is for testing the call
@@ -70,7 +70,7 @@ async function apiFetch() {
     }
 
 }
-apiFetch();
+apiFetch(url);
 
 
 
